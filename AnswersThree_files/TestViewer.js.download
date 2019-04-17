@@ -1,0 +1,172 @@
+function save_test_answer(qType, qRID, subqRID, answer, tsid, show_test_page) {
+	var ajax_load_id="id_form_area";
+	//console.log(qRID+'-'+answer);
+	$J("#id_question_answer_form").submit(function(event) { event.preventDefault(); });
+	$J("#id_SAVE_TEST_ANSWER_ajax_snipit").val("SAVE_TEST_ANSWER");
+	$J("#id_SAVE_TEST_ANSWER_question_type").val(qType);
+	$J("#id_SAVE_TEST_ANSWER_question_rid").val(qRID);
+	$J("#id_SAVE_TEST_ANSWER_sub_question_rid").val(subqRID);
+	$J("#id_SAVE_TEST_ANSWER_answer_rid_list").val(answer);
+	var serializedData = $J("#id_question_answer_form").serialize();
+	//console.log(serializedData);
+	var ajax_req = $J.ajax({url:"TestViewerAJAX.cfm", type:"post", data:serializedData });
+	ajax_req.fail(function(response, textStatus, errorThrown){
+		console.error("The following error occurred: "+ textStatus, errorThrown);
+		alert("An error occurred - answer may not be saved");
+	});
+
+	ajax_req.done(function(response, textStatus, jqXHR){
+
+		if(response.STATUS !== undefined && response.STATUS == 'Error'){ location.href="StudentHome.cfm";}
+		if (jq === 'E')
+		{
+			$J("#"+ajax_load_id).html(response);
+		} else {
+			var ajax_redraw = $J.ajax({
+															url:"TestViewerAJAX.cfm", 
+															type:"post", 
+															data: {
+																			'AJAX_SNIPIT' : 'DISPLAY_A_PAGE_OF_QUESTIONS',
+																			'TSID' : tsid,
+																			'SHOW_TEST_PAGE' : show_test_page,
+																			'ajax_load_id' : ajax_load_id
+																		}
+													});
+			ajax_redraw.fail(function(response, textStatus, errorThrown){
+				console.error("The following error occurred: "+ textStatus, errorThrown);
+				alert("An error occurred (question_flag_toggle)");
+			});
+			ajax_redraw.done(function(response, textStatus, jqXHR){
+				$J("#"+ajax_load_id).html(response);
+			});
+		}
+	});
+}
+
+function manually_grade_answer(qRID, manual_points, tsid, show_test_page) {
+	//console.log("manually grading answer");
+	var ajax_load_id="id_form_area";
+	//console.log(qRID+'-'+manual_points);
+	$J("#id_manually_grade_answer_form").submit(function(event) { event.preventDefault(); });
+	$J("#id_MANUALLY_GRADE_ANSWER_ajax_snipit").val("MANUALLY_GRADE_ANSWER");
+	$J("#id_MANUALLY_GRADE_ANSWER_question_rid").val(qRID);
+	$J("#id_MANUALLY_GRADE_ANSWER_manual_points").val(manual_points);
+	var serializedData = $J("#id_manually_grade_answer_form").serialize();
+	//console.log(serializedData);
+	var ajax_req = $J.ajax({url:"TestViewerAJAX.cfm", type:"post", data:serializedData });
+	ajax_req.fail(function(response, textStatus, errorThrown){
+		console.error("The following error occurred: "+ textStatus, errorThrown);
+		alert("An error occurred - answer may not be saved");
+	});
+	ajax_req.done(function(response, textStatus, jqXHR){
+
+	console.log("redraw page");
+
+		var ajax_redraw = $J.ajax({
+														url:"TestViewerAJAX.cfm", 
+														type:"post", 
+														data: {
+																		'AJAX_SNIPIT' : 'DISPLAY_A_PAGE_OF_QUESTIONS',
+																		'TSID' : tsid,
+																		'SHOW_TEST_PAGE' : show_test_page,
+																		'ajax_load_id' : ajax_load_id
+																	}
+												});
+		ajax_redraw.fail(function(response, textStatus, errorThrown){
+			console.error("The following error occurred: "+ textStatus, errorThrown);
+			alert("An error occurred (question_flag_toggle)");
+		});
+		ajax_redraw.done(function(response, textStatus, jqXHR){
+			$J("#"+ajax_load_id).html(response);
+		});
+	});
+}
+
+function manually_comment_answer(qRID, comment, tsid, show_test_page) {
+	//console.log("manually comment answer");
+	var ajax_load_id="id_form_area";
+	//console.log(qRID+'-'+comment);
+	$J("#id_manually_comment_answer_form").submit(function(event) { event.preventDefault(); });
+	$J("#id_MANUALLY_COMMENT_ANSWER_ajax_snipit").val("MANUALLY_COMMENT_ANSWER");
+	$J("#id_MANUALLY_COMMENT_ANSWER_question_rid").val(qRID);
+	$J("#id_MANUALLY_COMMENT_ANSWER_comment").val(comment);
+	var serializedData = $J("#id_manually_comment_answer_form").serialize();
+	//console.log(serializedData);
+	var ajax_req = $J.ajax({url:"TestViewerAJAX.cfm", type:"post", data:serializedData });
+	ajax_req.fail(function(response, textStatus, errorThrown){
+		console.error("The following error occurred: "+ textStatus, errorThrown);
+		alert("An error occurred - answer may not be saved");
+	});
+	ajax_req.done(function(response, textStatus, jqXHR){
+
+	//console.log("redraw page");
+
+		var ajax_redraw = $J.ajax({
+														url:"TestViewerAJAX.cfm", 
+														type:"post", 
+														data: {
+																		'AJAX_SNIPIT' : 'DISPLAY_A_PAGE_OF_QUESTIONS',
+																		'TSID' : tsid,
+																		'SHOW_TEST_PAGE' : show_test_page,
+																		'ajax_load_id' : ajax_load_id
+																	}
+												});
+		ajax_redraw.fail(function(response, textStatus, errorThrown){
+			console.error("The following error occurred: "+ textStatus, errorThrown);
+			alert("An error occurred (question_flag_toggle)");
+		});
+		ajax_redraw.done(function(response, textStatus, jqXHR){
+			$J("#"+ajax_load_id).html(response);
+		});
+	});
+}
+
+function update_question_menu(answer, question_type, question_rid) {
+	//alert(answer+'~'+question_type+'~'+question_rid);
+	if (question_type == "S" || question_type == "N" || question_type == "E")
+	{
+		if (answer.replace(/^\s+|\s+$/g, '').length > 0) 
+		{
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_not_answered').addClass('test_left_menu_question_box_answered');
+		} else { 
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_answered').addClass('test_left_menu_question_box_not_answered');
+		}
+	}
+
+	if (question_type == "C" || question_type == "T")
+	{
+		answer = answer.replace(/,/g , ""); // replace the commas from the list of answers and then see if there is any length (length==some answer)
+		if (answer.replace(/^\s+|\s+$/g, '').length > 0)
+		{
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_not_answered').addClass('test_left_menu_question_box_answered');
+		} else { 
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_answered').addClass('test_left_menu_question_box_not_answered');
+		}
+	}
+
+	if (question_type == "M")
+	{
+		var all_selected_flg = true; //Sum all the selectedIndexes if the number is greater than zero then something in the group is selected - note: selectedIndex == 0 is always a blank
+		//Note: the parent rid used below should be the test_question_parent_rid for 'M' question_type
+		$J('.MATCHING_'+question_rid).each(function(i, obj) { if (obj.selectedIndex === 0) { all_selected_flg = false; } });
+		if (all_selected_flg)
+		{
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_not_answered').addClass('test_left_menu_question_box_answered');
+		} else { 
+			$J('#id_menu_question_'+question_rid).removeClass('test_left_menu_question_box_answered').addClass('test_left_menu_question_box_not_answered');
+		}
+	}
+}
+
+function validate_finish(preview_test) {
+	$J("#id_finish_test").submit(function(event) { event.preventDefault(); });
+	var serializedData = $J("#id_finish_test").serialize();
+	var ajax_req = $J.ajax({url:"TestViewerAJAX.cfm", type:"post", data:serializedData });
+	ajax_req.fail(function(response, textStatus, errorThrown){
+		console.error("The following error occurred: "+ textStatus, errorThrown);
+		alert("An error occurred");
+	});
+	ajax_req.done(function(response, textStatus, jqXHR){
+		$J("#id_form_area").html(response);
+	});
+}

@@ -1,0 +1,434 @@
+div.rounded-corners {
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+}
+
+table.table_grid {
+	border-collapse:collapse;
+	empty-cells:show;
+}
+
+table.table_grid thead {
+	background-color:#B1BDB3;
+	color:white;
+}
+
+table.table_grid thead th {
+	padding:5px 10px;
+	font-size:1.1em;
+	font-weight:bold;
+	text-align:center;
+}
+
+table.table_grid tbody {
+}
+
+table.table_grid tbody tr {
+	vertical-align:middle;
+}
+
+table.table_grid tbody tr.stripe {
+	background-color:#EDF0E9;
+}
+
+table.table_grid tbody tr.stripe_dropped {
+	background-color:#FF7979;
+}
+
+table.table_grid tbody tr.stripe_dropped td a {
+	color:white;
+}
+
+table.table_grid tbody tr.stripe_late_active {
+	background-color:#82FF82;
+}
+
+table.table_grid tbody th {
+	vertical-align:middle;
+	color:#9E9E93;
+	color:black;
+	padding:5px 10px;
+	font-weight:bold;
+	text-align:center;
+}
+
+table.table_grid tbody th.workflow {
+	vertical-align:middle;
+	background-color:#B1BDB3;
+	color:white;
+	padding:5px 10px;
+	font-weight:normal;
+	text-align:center;
+	font-size:12pt;
+}
+
+table.table_grid tbody td {
+	vertical-align:middle;
+	color:#9E9E93;
+	color:black;
+	padding:5px 10px;
+	text-align:center;
+}
+
+table.table_grid tfoot {
+}
+
+table.table_grid tfoot tr {
+	color:white;
+	background-color:#B1BDB3;
+	vertical-align:middle;
+	height:5px;
+}
+
+table.table_grid tfoot td {
+	padding: 5px 0;
+	vertical-align:middle;
+	text-align:center;
+}
+
+table.table_information_grid {
+	border-collapse:collapse;
+	empty-cells:show;
+	width:560px;
+	margin:5px auto 5px auto;
+}
+
+table.table_information_grid thead {
+}
+
+table.table_information_grid thead th {
+	background-color:#B1BDB3;
+	color:white;
+	padding:5px 10px;
+	font-size:1.1em;
+	font-weight:bold;
+	text-align:center;
+}
+
+table.table_information_grid thead td {
+	background-color:#B1BDB3;
+	color:black;
+	padding:5px 10px;
+	font-size:1.1em;
+	font-weight:bold;
+	text-align:left;
+}
+
+table.table_information_grid tbody {
+}
+
+table.table_information_grid tbody tr {
+	vertical-align:middle;
+}
+
+table.table_information_grid tbody tr.stripe {
+	background-color:#EDF0E9;
+}
+
+table.table_information_grid tbody th {
+	vertical-align:middle;
+	color:#9E9E93;
+	padding:5px 10px;
+	font-weight:bold;
+	text-align:left;
+}
+
+table.table_information_grid tbody td {
+	vertical-align:middle;
+	color:#9E9E93;
+	padding:5px 10px;
+	text-align:center;
+}
+
+table.table_information_grid tfoot {
+}
+
+table.table_information_grid tfoot tr {
+	color:white;
+	background-color:#B1BDB3;
+	vertical-align:middle;
+	height:15px;
+}
+
+div.test_left_menu {
+	padding:0px 10px 10px 10px;
+	margin:0 auto 30px auto;
+	width:220px;
+	height:100%;
+}
+
+div.test_left_menu_question_box {
+	float:left;
+	color:#682688;
+	border:1px solid #682688;
+	height:28px;
+	width:48px;
+	vertical-align:middle;
+	padding-top:4px;
+	text-align:center;
+	margin:1px;
+}
+
+div.test_left_menu_question_box:hover {
+	background-color:#DBDBDB;
+	cursor:pointer;
+}
+
+div.test_left_menu_question_box_not_answered {
+	background-color:#FAF8FB;
+}
+
+div.test_left_menu_question_box_answered {
+	background-color:#D2BEDB;
+}
+
+div.group_text {
+	background-color:white;
+	border:1px solid;
+	color:#682688;
+	padding:10px;
+	margin:10px 0;
+}
+
+td.test_questions_even {
+	background-color:#FFF3BF;
+}
+
+td.test_questions_odd {
+	background-color:#CCDDFF;
+}
+
+table.draw_question_box {
+	width:100%;
+}
+
+table.draw_question_box td.draw_question_box:first-child {
+	width:auto;
+	border-right:4px solid white;
+}
+
+div.test_questions {
+	padding:10px;
+}
+div.test_questions p:first-child {
+	display:inline;
+}
+
+div.test_question_answers {
+	padding:10px 10px 20px 40px;
+}
+
+div#id_test_page_nav_container {
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;
+	border-radius: 20px;
+	background-color:#E4E4E4; 
+	margin:30px auto 10px auto; 
+	padding:5px; 
+	width:800px
+}
+
+span.test_page_number {
+	font-size:1.3em;
+	font-weight:normal;
+}
+
+a.test_page_nav_left {
+	text-decoration: underline; 
+	margin-right:10px;
+	font-size:1.1em;
+}
+
+a.test_page_nav_right {
+	text-decoration: underline; 
+	margin-left:10px;
+	font-size:1.1em;
+}
+
+table.test_question_answers {
+	border-collapse:collapse;
+	empty-cells:show;
+	border:0;
+	margin:0;
+}
+
+table.test_question_answers tr {
+	vertical-align:top;
+}
+
+table.test_question_answers td {
+	padding:9px;
+}
+
+table.test_question_answers td.col_answer_text p:first-child {
+	display:inline;
+}
+
+table.test_question_answers td.col_input {
+	text-align:left;
+}
+
+table.test_question_answers td.col_row_identifier {
+	text-align:right;
+}
+
+table.test_question_answers td.col_answer_text {
+	text-align:left;
+	min-width:100px;
+}
+
+table.test_question_matching {
+	border-collapse:collapse;
+	empty-cells:show;
+	border:0;
+	margin:0;
+}
+
+table.test_question_matching tr {
+	vertical-align:top;
+}
+
+table.test_question_matching th {
+	padding:5px;
+	text-align:left;
+	font-weight:bold;
+}
+
+table.test_question_matching td {
+	padding:5px;
+	text-align:left;
+	font-weight:normal;
+}
+
+table.test_question_matching td.numbering {
+	font-weight:bold;
+	border-left:1px solid black;
+}
+
+table.test_question_matching td p:first-child {
+	display:inline;
+}
+
+div.answer_specific_feedback {
+	background-color:#E4E4E4;
+	padding:4px 14px 4px 14px;
+	color:brown;
+}
+
+div.surpress_first_p p:first-child {
+	display:inline;
+}
+
+div.answer_numeric {
+	padding:5px;
+	width:325px;
+}
+
+div.answer_numeric_correct {
+	padding:5px;
+	background-color:#66B366;
+}
+
+div.answer_numeric_correct:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_correct_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_numeric_incorrect {
+	padding:5px;
+	
+}
+
+div.answer_numeric_incorrect:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_incorrect_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_short_answer {
+	padding:5px;
+	width:325px;
+}
+
+div.answer_short_answer_correct {
+	padding:5px;
+	background-color:#66B366;
+}
+
+div.answer_short_answer_correct:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_correct_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_short_answer_incorrect {
+	padding:5px;
+	background-color:#FF3333;
+}
+
+div.answer_short_answer_incorrect:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_incorrect_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_multiple_choice {
+	width:28px;
+}
+
+div.answer_multiple_choice_correct {
+	/* background-color:#66B366; */
+}
+
+div.answer_multiple_choice_correct:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_correct_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_multiple_choice_incorrect {
+	/* background-color:#FF3333; */
+}
+
+div.answer_multiple_choice_incorrect:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_incorrect_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_matching {
+	width:28px;
+}
+
+div.answer_matching_correct {
+	/*background-color:#66B366;*/
+}
+
+div.answer_matching_correct:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_correct_24.png);  not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.answer_matching_incorrect {
+	/*background-color:#FF3333; */
+}
+
+div.answer_matching_incorrect:after {
+	vertical-align:bottom;
+	/* content:url(/Sapphire/images/icons/answer_incorrect_24.png); not supported in IE7 - which is the forced mode for pages when IE browser is detected */
+}
+
+div.grading_status {
+ font-size:.8em;
+ text-align:center;
+}
+
+div.delete_test_display {
+	color:red;
+	font-weight:bold;
+	background-color:#FFFFFF;
+	border:2px solid red;
+}
+
+.class_details_btn {
+	font-size:.8em; 
+	margin-left:10px;
+}

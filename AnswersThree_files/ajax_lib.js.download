@@ -1,0 +1,74 @@
+/**************************************************************************************************
+  AJAX calls library
+  Requires: jQuery (ver: 1.10.1)
+***************************************************************************************************/
+
+// global variables used by the library (never need to set anything here)
+var ajax_request;
+
+
+function ajax_form_submit_binding(bind_submit_id){
+	//The following routines are used to send an ajax call to the server to get data
+	$J('#'+bind_submit_id).submit(function(event) { // bind the submit event of a form to this function
+		if (ajax_request) { // abort any pending request
+				ajax_request.abort();
+		}
+
+		event.preventDefault(); // prevent default posting of form
+		var $Jform = $J(this); // setup some local variables
+		var $inputs = $Jform.find("input, select, button, textarea"); // let's select and cache all the fields
+
+		var serializedData = $Jform.serialize(); // serialize the data in the form
+		$inputs.prop("disabled", true); // disable the inputs for the duration of the ajax request (after you serialize the data - disabled stuff doesn't serialize)
+
+		var ajax_url = $Jform.attr("action");
+		if (typeof ajax_url === undefined) { alert('No action defined on the form, returning abruptly.'); return false; } // set the ajax_url variable
+
+		var ajax_post = "post";
+		var ajax_load_id = $Jform.attr("ajax_load_id");
+		var ajax_msg_area = $Jform.attr("ajax_msg_area");
+		var ajax_msg_start = $Jform.attr("ajax_msg_start");
+		var ajax_msg_done = $Jform.attr("ajax_msg_done");
+		var ajax_msg_fail = $Jform.attr("ajax_msg_fail");
+
+		if ($Jform.attr("method") !== undefined) { ajax_post = $Jform.attr("method"); }
+
+		$J(document).ajaxStart(function(){
+			if (typeof ajax_load_id !== undefined) // if the message area is not defined then don't show a message
+			{
+				if (ajax_msg_start !== undefined) 
+					{
+						$J("#ajax_msg_area").stop().show().css({ visibility: "visible", opacity:1 });
+						$J("#ajax_msg_area").addClass('ajax_lib_msg_start').html(ajax_msg_start).fadeIn(200);
+					}
+			}
+		});
+
+		ajax_request = $J.ajax({ url: ajax_url, type: ajax_post, data: serializedData });
+
+		// on successful AJAX call
+		ajax_request.done(function(response, textStatus, jqXHR){
+			if (typeof ajax_load_id !== undefined) { $J("#"+ajax_load_id).html(response); }
+			if (typeof ajax_msg_done !== undefined)
+			{
+				$J("#ajax_msg_area").show().removeClass('ajax_lib_msg_start').addClass('ajax_lib_msg_done').html(ajax_msg_done);
+			}
+			$J("#ajax_msg_area").show().fadeTo(8000, 0, function () { $J('#ajax_msg_area').css({ visibility: "hidden" }); });
+		});
+
+		// not so successful AJAX call
+		ajax_request.fail(function(response, textStatus, errorThrown){
+			//console.error("The following error occurred: "+ textStatus, errorThrown);
+			if (ajax_msg_fail !== undefined)
+				{
+					$J("#ajax_msg_area").addClass('ajax_lib_msg_fail').removeClass('ajax_lib_msg_start').html(ajax_msg_fail);
+				}
+		});
+
+		// always run after the AJAX call
+		ajax_request.always(function() {
+				$inputs.prop("disabled", false); // re-enable the inputs for the duration of the ajax request
+		});
+
+	});
+}
